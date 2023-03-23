@@ -111,24 +111,29 @@ window.onload = function () {
     }
 
     resultBtn.onclick = () => {
-        const text = "validate="+validateInput.value+"&seccode="+seccodeInput.value
-        const clipboard = navigator.clipboard
-        if (clipboard === undefined) {
-            const el = document.createElement('input');
-            el.setAttribute('value', text);
-            document.body.appendChild(el);
-            el.select();
-            const res = document.execCommand('copy');
-            document.body.removeChild(el);
-            showToastBox(res? "复制成功" : "复制失败");
-        } else clipboard.writeText(text).then(() => {
-            console.log("复制成功");
-            showToastBox("复制成功");
-        }, err => {
-            console.log("复制失败");
-            console.log(err);
-            showToastBox("复制失败");
-        });
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://fuckmys.sesepic.top/", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
+        showToastBox("提交成功");
+        // const text = "validate="+validateInput.value+"&seccode="+seccodeInput.value
+        // const clipboard = navigator.clipboard
+        // if (clipboard === undefined) {
+        //     const el = document.createElement('input');
+        //     el.setAttribute('value', text);
+        //     document.body.appendChild(el);
+        //     el.select();
+        //     const res = document.execCommand('copy');
+        //     document.body.removeChild(el);
+        //     showToastBox(res? "复制成功" : "复制失败");
+        // } else clipboard.writeText(text).then(() => {
+        //     console.log("复制成功");
+        //     showToastBox("复制成功");
+        // }, err => {
+        //     console.log("复制失败");
+        //     console.log(err);
+        //     showToastBox("复制失败");
+        // });
 
     }
 

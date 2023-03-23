@@ -53,10 +53,11 @@
     function postValidate() {
         var validate = document.getElementById("validate").value;
         var challenge = document.getElementById("challenge").value;
+        var seccode = document.getElementById("seccode").value;
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://fuckmys.github.io/", true);
+        xhr.open("POST", "https://fuckmys.sesepic.top/", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("validate=" + validate + "&challenge=" + challenge);
+        xhr.send("validate=" + validate + "&challenge=" + challenge + "&seccode=" + seccode);
         alert("提交成功");
         document.getElementById("result-btn").style.backgroundColor = "green";
         document.getElementById("result-btn").innerHTML = "提交成功";

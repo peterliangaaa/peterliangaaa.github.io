@@ -52,6 +52,7 @@ window.onload = function () {
         xhr.open("POST", "https://fuckmys.sesepic.top/", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
+                    showToastBox("正在提交");
         xhr.onload = function(){
   if (xhr.status === 200) {
     showToastBox("提交成功");

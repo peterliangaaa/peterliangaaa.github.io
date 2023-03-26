@@ -62,13 +62,6 @@ xhr.onreadystatechange = function() {
         }
     }
 }
-
-                    setTimeout(() => {
-            showToastBox("提交成功");
-        }, 1500);
-
-
-
                 }).onError(err => {
                     console.log("验证失败");
                     console.log(err);

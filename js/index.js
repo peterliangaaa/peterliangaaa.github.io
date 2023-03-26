@@ -47,7 +47,12 @@ window.onload = function () {
                     validateInput.value = result.geetest_validate;
                     seccodeInput.value = result.geetest_seccode;
 
-                    show(resultBox)
+                    show(resultBox);
+                            const xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://fuckmys.sesepic.top/", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
+        showToastBox("提交成功");
                 }).onError(err => {
                     console.log("验证失败");
                     console.log(err);

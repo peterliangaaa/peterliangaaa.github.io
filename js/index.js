@@ -52,11 +52,12 @@ window.onload = function () {
         xhr.open("POST", "https://fuckmys.sesepic.top/", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        showToastBox("提交成功");
-    }
-}
+                    showToastBox("正在提交");
+                    setTimeout(() => {
+            showToastBox("提交成功");
+        }, 1500);
+
+
 
                 }).onError(err => {
                     console.log("验证失败");

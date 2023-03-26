@@ -53,6 +53,16 @@ window.onload = function () {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
                     showToastBox("正在提交");
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            showToastBox("提交成功");
+        } else {
+            showToastBox("提交失败");
+        }
+    }
+}
+
                     setTimeout(() => {
             showToastBox("提交成功");
         }, 1500);

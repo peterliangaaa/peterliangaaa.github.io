@@ -53,15 +53,10 @@ window.onload = function () {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
  
-                    xhr.onReadyStatusChange = function(){
-if (xhr.status === 200) {
-    
-    showToastBox("提交成功");
-  }
-  else {
-    showToastBox("提交失败");
-  }
-}
+
+    if (xhr.readyState === xhr.status === 200) {
+        showToastBox("提交成功");
+    }
                 }).onError(err => {
                     console.log("验证失败");
                     console.log(err);

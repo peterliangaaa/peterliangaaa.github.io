@@ -53,18 +53,20 @@ window.onload = function () {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
                     showToastBox("正在提交");
-xhr.onreadystatechange = function() {
-        setTimeout(() => {
-console.log("1.5s")
-        }, 1500);
-
-
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        showToastBox("提交成功");
-    } else {
-        showToastBox("提交失败" + xhr.status);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                const res = JSON.parse(xhr.responseText);
+                if (res.code === 200) {
+                    showToastBox("提交成功");
+                } else {
+                    showToastBox("提交失败" + res.code);
+                }
+            } else {
+                showToastBox("提交失败，status：" + xhr.status);
+            }
+        }
     }
-}
                 }).onError(err => {
                     console.log("验证失败");
                     console.log(err);

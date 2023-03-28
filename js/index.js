@@ -54,6 +54,11 @@ window.onload = function () {
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
                     showToastBox("正在提交");
 xhr.onreadystatechange = function() {
+        setTimeout(() => {
+console.log("1.5s")
+        }, 1500);
+
+
     if (xhr.readyState == 4 && xhr.status == 200) {
         showToastBox("提交成功");
     } else {

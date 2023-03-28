@@ -60,10 +60,10 @@ window.onload = function () {
                 if (res.code === 200) {
                     showToastBox("提交成功");
                 } else {
-                    showToastBox("提交失败" + res.code);
+                    showToastBox("提交失败" + res.code + xhr.readyState);
                 }
             } else {
-                showToastBox("提交失败，status：" + xhr.status);
+                showToastBox("提交失败，status：" + xhr.status + xhr.readyState);
             }
         }
     }

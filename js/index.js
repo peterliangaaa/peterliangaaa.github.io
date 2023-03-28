@@ -55,16 +55,14 @@ window.onload = function () {
                     showToastBox("正在提交");
     xhr.addEventListener("readystatechange", function() {
         if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
+
                 const res = JSON.parse(xhr.responseText);
                 if (res.code === 200) {
                     showToastBox("提交成功");
                 } else {
                     showToastBox("提交失败" + res.code + xhr.readyState);
                 }
-            } else {
-                showToastBox("提交失败，status：" + xhr.status + xhr.readyState);
-            }
+         
         }
     });
                 }).onError(err => {

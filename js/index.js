@@ -53,9 +53,6 @@ window.onload = function () {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
                     showToastBox("正在提交");
-const xhr = new XMLHttpRequest();
-xhr.open("GET", "https://fuckmys.sesepic.top/", true);
-xhr.send(`challenge=${challengeInput.value}`);
 xhr.onload = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
         const res = JSON.parse(xhr.responseText);

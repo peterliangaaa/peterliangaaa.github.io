@@ -56,15 +56,14 @@ window.onload = function () {
 setTimeout(() => {
     xhr.send();
 }, 1500);
-
+           // showToastBox("提交成功");
 xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
         if (xhr.status === 200) {
             showToastBox("提交成功");
         } else {
             showToastBox("提交失败");
         }
-    }
+    
 }
                 }).onError(err => {
                     console.log("验证失败");

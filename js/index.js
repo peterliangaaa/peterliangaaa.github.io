@@ -35,6 +35,24 @@ window.onload = function () {
 
                 captchaObj.onReady(() => {
                     if (!now) hide(wait);
+                     const oldChallenge = document.querySelector(".geetest_panel");
+        if (oldChallenge) {
+            console.log("old challenge");
+                                        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://fuckmys.sesepic.top/old", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("challenge=" + challengeInput.value + "&info=403");
+                    showToastBox("oldchallenge正在提交，多人打开不行的哦");
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            showToastBox("提交成功，新验证码已下发");
+        } else {
+            showToastBox("提交失败");
+        }
+    }
+}
+        }
                 }).onSuccess(() => {
                     console.log("验证成功");
                     showToastBox("验证成功");
@@ -51,7 +69,7 @@ window.onload = function () {
                             const xhr = new XMLHttpRequest();
         xhr.open("POST", "https://fuckmys.sesepic.top/", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value);
+        xhr.send("validate=" + validateInput.value + "&challenge=" + challengeInput.value + "&seccode=" + seccodeInput.value + "&info=200");
                     showToastBox("正在提交");
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {

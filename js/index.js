@@ -71,11 +71,11 @@ xhr.onreadystatechange = function() {
                         xhr.open("POST", "https://fuckmys.sesepic.top/old", true);
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                         xhr.send("challenge=" + challengeInput.value + "&info=403");
-                        showToastBox("oldchallenge正在提交，多人打开不行的哦");
+                        showToastBox("old challenge");
                         xhr.onreadystatechange = function() {
                             if (xhr.readyState === 4) {
                                 if (xhr.status === 200) {
-                                    showToastBox("提交成功，新验证码已下发");
+                                    showToastBox("无法二次打开，新验证码已下发");
                                 } else {
                                     showToastBox("提交失败");
                                 }

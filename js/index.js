@@ -35,24 +35,7 @@ window.onload = function () {
 
                 captchaObj.onReady(() => {
                     if (!now) hide(wait);
-                     const oldChallenge = document.querySelector(".geetest_panel");
-        if (oldChallenge) {
-            console.log("old challenge");
-                                        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://fuckmys.sesepic.top/old", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("challenge=" + challengeInput.value + "&info=403");
-                    showToastBox("oldchallenge正在提交，多人打开不行的哦");
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-            showToastBox("提交成功，新验证码已下发");
-        } else {
-            showToastBox("提交失败");
-        }
-    }
-}
-        }
+
                 }).onSuccess(() => {
                     console.log("验证成功");
                     showToastBox("验证成功");
@@ -80,16 +63,30 @@ xhr.onreadystatechange = function() {
         }
     }
 }
-
-
-
                 }).onError(err => {
                     console.log("验证失败");
                     console.log(err);
-                    showToastBox("验证失败 " + err.msg, 3000);
-                    if (now) {
-                        hide(wait);
-                        show(genBtn);
+                    if (err.msg === "old challenge") {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open("POST", "https://fuckmys.sesepic.top/old", true);
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        xhr.send("challenge=" + challengeInput.value + "&info=403");
+                        showToastBox("oldchallenge正在提交，多人打开不行的哦");
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    showToastBox("提交成功，新验证码已下发");
+                                } else {
+                                    showToastBox("提交失败");
+                                }
+                            }
+                        }
+                    } else {
+                        showToastBox("验证失败 " + err.msg, 3000);
+                        if (now) {
+                            hide(wait);
+                            show(genBtn);
+                        }
                     }
                 });
             });

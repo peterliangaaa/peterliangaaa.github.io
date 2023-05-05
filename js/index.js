@@ -110,7 +110,7 @@ xhr.onreadystatechange = function() {
         hide(genBtn);
         show(wait);
 
-        new GeeTest(gt, challenge).init(true);
+     //   new GeeTest(gt, challenge).init(true);
     }
 
     const search = location.search;
@@ -168,6 +168,11 @@ xhr.onreadystatechange = function() {
         // });
 
     }
+    const validateBtn = document.querySelector("#validateBtn");
+
+validateBtn.onclick = () => {
+    new GeeTest(gtInput.value, challengeInput.value).init(true);
+}
 
     let timer = null
     function showToastBox(text, timeout = 2000) {
